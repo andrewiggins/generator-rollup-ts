@@ -41,7 +41,7 @@
   "scripts": {
     "prepublish": "nsp check",
     "pretest": "eslint . --fix",
-    "test": "jest"
+    "test": "jest --coverage --coverageDirectory coverage"
   },
   "eslintConfig": {
     "extends": "xo-space",
