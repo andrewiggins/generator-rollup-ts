@@ -1,4 +1,29 @@
-* Add tests
-* Add subgenerator for web projects
-  * Adds http-server dep
-  * Add index.html
+# TODO
+
+* Add subgenerators
+  * web project
+    * Adds http-server dep
+    * Add index.html
+  * css
+    * postcss
+      * plugins to look at:
+        * cssnext: http://cssnext.io/
+        * postcss-rtl: https://github.com/vkalinichev/postcss-rtl
+    * sass
+    * One possible setup using rollup-plugin-postcss and node-sass: https://ms-andwi.visualstudio.com/sandbox/_git/me-control-component-service/commit/1eef8fb9f63e1207af253d8b317eadc65e1059bf
+    * Also consider rollup-plugin-sass with a postcss processor: https://github.com/differui/rollup-plugin-sass
+  * tests
+    * jest setup?
+  * npm build
+    * Add scripts to build with npm (compile:ts, compile:css, watch:compile:ts, etc.)
+  * gulp build
+    * Add gulp build pipeline with npm scripts (build, test, start, etc.)
+
+
+# Sample projects:
+
+* https://github.com/andrewiggins/sandbox/tree/master/hyperapp
+* https://github.com/andrewiggins/sandbox/tree/master/rollup
+
+Useful guide:
+* https://code.lengstorf.com/learn-rollup-css/
