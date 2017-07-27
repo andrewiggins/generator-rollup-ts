@@ -39,7 +39,8 @@ module.exports = [
     type: 'input',
     when: true,
     default(results) {
-      return results.authorEmail ? `https://github.com/${results.authorEmail.replace(/@.*/, '')}` : undefined;
+      let email = results.authorEmail || gitc.user.email;
+      return email ? `https://github.com/${email.replace(/@.*/, '')}` : undefined;
     }
   },
   {
@@ -48,7 +49,8 @@ module.exports = [
     type: 'input',
     when: true,
     default(results) {
-      return results.authorEmail ? `https://github.com/${gitc.user.email.replace(/@.*/, '')}/${results.name}` : undefined;
+      let email = results.authorEmail || gitc.user.email;
+      return email ? `https://github.com/${email.replace(/@.*/, '')}/${results.name}` : undefined;
     }
   },
   // {
