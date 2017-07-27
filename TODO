@@ -1,0 +1,4 @@
+* Add tests
+* Add subgenerator for web projects
+  * Adds http-server dep
+  * Add index.html
