@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Andre Wiggins",
+      "authorEmail": "andrewiggins@live.com",
+      "authorUrl": ""
+    }
+  }
+}
