@@ -81,10 +81,11 @@ module.exports = class extends Generator {
         url: this.props.authorUrl
       },
       scripts: {
-        build: 'run-s compile lint package minify',
+        build: 'run-s compile lint package minify nsp',
         compile: 'tsc -p tsconfig.json',
         lint: 'tslint -c tslint.json -p tsconfig.json',
         minify: `uglifyjs ${this.props.bundleFile} --compress --mangle --source-map -o ${this.props.minifyFile}`,
+        nsp: 'nsp check',
         package: 'rollup -c rollup.config.js',
         prestart: 'run-s build',
         start: 'run-p watch:*',
@@ -108,6 +109,7 @@ module.exports = class extends Generator {
     this.npmInstall([
       'chokidar-cli',
       'npm-run-all',
+      'nsp',
       'rollup',
       'rollup-plugin-node-resolve',
       'rollup-plugin-sourcemaps',
