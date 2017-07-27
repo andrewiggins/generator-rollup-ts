@@ -15,7 +15,8 @@ describe('generator-rollup-ts:app', () => {
         repository: 'https://repository.com',
         license: 'MIT',
         format: 'umd',
-        bundleFile: 'dist/app.umd.js'
+        bundleFile: 'dist/app.umd.js',
+        bundlesizeThreshold: 30
       });
   });
 

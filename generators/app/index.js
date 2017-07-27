@@ -81,19 +81,23 @@ module.exports = class extends Generator {
         url: this.props.authorUrl
       },
       scripts: {
-        build: 'run-s compile lint package minify nsp',
+        build: 'run-s compile lint package minify',
         compile: 'tsc -p tsconfig.json',
         lint: 'tslint -c tslint.json -p tsconfig.json',
         minify: `uglifyjs ${this.props.bundleFile} --compress --mangle --source-map -o ${this.props.minifyFile}`,
-        nsp: 'nsp check',
         package: 'rollup -c rollup.config.js',
-        prestart: 'run-s build',
+        prestart: 'run-s build test',
         start: 'run-p watch:*',
+        test: 'bundlesize && nsp check',
         'watch:compile': 'npm run compile -- --watch',
         'watch:lint': `chokidar "src/**/*.ts" -c "npm run lint"`,
         'watch:package': 'npm run package -- --watch',
         'watch:minify': `chokidar "${this.props.bundleFile}" -c "npm run minify"`
-      }
+      },
+      bundlesize: [{
+        path: this.props.minifyFile,
+        threshold: this.props.bundlesizeThreshold + 'Kb'
+      }]
     }, pkg);
 
     this.fs.writeJSON(this.destinationPath('package.json'), newPkg);
@@ -107,6 +111,7 @@ module.exports = class extends Generator {
     });
 
     this.npmInstall([
+      'bundlesize',
       'chokidar-cli',
       'npm-run-all',
       'nsp',

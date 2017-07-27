@@ -104,5 +104,14 @@ module.exports = [
     default(results) {
       return `dist/${results.name}.${results.format}.js`;
     }
+  },
+  {
+    message: 'What\'s the max size (in kilobytes) of your bundle?',
+    name: 'bundlesizeThreshold',
+    type: 'input',
+    when: true,
+    default: 50,
+    validate: value => isFinite(value),
+    filter: value => parseFloat(value)
   }
 ];
